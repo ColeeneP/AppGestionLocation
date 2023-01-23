@@ -19,10 +19,10 @@ public class LocationApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Class.forName("org.postgresql.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/library","postgres","Gospel34.");
+		Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/immovable", "postgres", "Gospel34.");
 		System.out.println(conn);
 
-		String query = "SELECT * FROM livre";
+		String query = "SELECT * FROM flat";
 
 		ResultSet results;
 
