@@ -30,4 +30,67 @@ public class Flat {
 
     private Boolean available;
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAdditional() {
+        return additional;
+    }
+
+    public void setAdditional(String additional) {
+        this.additional = additional;
+    }
+
+    public Integer getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(Integer postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Float getRent() {
+        return rent;
+    }
+
+    public void setRent(Float rent) {
+        this.rent = rent;
+    }
+
+    public Float getCharges() {
+        return charges;
+    }
+
+    public void setCharges(Float charges) {
+        this.charges = charges;
+    }
+
+    public Float getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(Float deposit) {
+        this.deposit = deposit;
+    }
+
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
+    }
 }
