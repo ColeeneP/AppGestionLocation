@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS immovable;
-\c library;
+CREATE DATABASE immovable;
+\c immovable;
 
 CREATE TABLE IF NOT EXISTS tenant (
     id INT NOT NULL PRIMARY KEY,
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS flat (
     rent VARCHAR NOT NULL,
     charges VARCHAR NOT NULL,
     deposit VARCHAR NOT NULL,
-    available BOOLEAN NOT NULL DEFAUT 0
+    available BOOLEAN NOT NULL DEFAULT true
 );
 
 CREATE TABLE IF NOT EXISTS rental (
@@ -40,16 +40,18 @@ CREATE TABLE IF NOT EXISTS payment (
     amount VARCHAR
 );
 
+CREATE TYPE status AS ENUM ('ingoing', 'outgoing');
+
 CREATE TABLE IF NOT EXISTS inventory (
     id INT NOT NULL PRIMARY KEY,
     rental INT NOT NULL,
     FOREIGN KEY (rental) REFERENCES rental(id),
-    status ENUM('ingoing', 'outgoing'),
+    status status,
     date DATE,
     notes TEXT
 );
 
-CREATE TABLE IF NOT EXISTS user (
+CREATE TABLE IF NOT EXISTS users (
     id INT NOT NULL PRIMARY KEY,
     firstname VARCHAR(50) NOT NULL,
     lastname VARCHAR(50) NOT NULL,
