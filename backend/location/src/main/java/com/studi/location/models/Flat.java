@@ -1,7 +1,10 @@
 package com.studi.location.models;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name = "flat")
 public class Flat {
