@@ -5,6 +5,8 @@ import './index.css';
 import App from './App.js';
 import reportWebVitals from './reportWebVitals';
 import Home from './components/Home';
+import Tenants from './components/Tenants';
+import Flats from './components/Flats';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,9 +14,12 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/home" element={<Home />} />
+        <Route path="/tenants" element={<Tenants />} />
+        <Route path="/flats" element={<Flats />} />
       </Routes>
+    <App /> 
     </BrowserRouter>
-    <App />
+    
   </React.StrictMode>
 );
 

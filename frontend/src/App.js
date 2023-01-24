@@ -13,6 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Home from './components/Home';
+import { Link } from "react-router-dom";
 
 export default function App() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -31,9 +32,9 @@ export default function App() {
       <header className="App-header">
       <AppBar position="fixed" top='0' sx={{ display: isMobile ? 'block' : 'none'}}>
         <Toolbar>
-          <Typography variant="h6" component="div" align='left'  sx={{ flexGrow: 1 }}>
+        <Link to={`/home`}><Typography variant="h6" component="div" align='left'  sx={{ flexGrow: 1 }}>
             Gestion Immo
-          </Typography>
+          </Typography></Link>
           <MoreVertIcon onClick={handleClick} />
             <Menu         MenuListProps={{
           'aria-labelledby': 'long-button',
@@ -42,10 +43,10 @@ export default function App() {
         open={open}
         onClose={handleClose}>
               <MenuItem>
-                <Button color="inherit"><HomeWorkIcon /></Button>
+              <Link to={`/flats`}><Button color="inherit"><HomeWorkIcon /></Button></Link>
               </MenuItem>
               <MenuItem>
-              <Button color="inherit"><EscalatorWarningIcon /></Button>
+              <Link to={`/tenants`}><Button color="inherit"><EscalatorWarningIcon /></Button></Link>
               </MenuItem>
               <MenuItem>
               <Button color="inherit"><LogoutIcon /></Button>
@@ -56,15 +57,14 @@ export default function App() {
 
       <AppBar position="fixed" top='0' sx={{ display: isMobile ? 'none' : 'block'}}>
         <Toolbar>
-          <Typography variant="h6" component="div" align='left'  sx={{ flexGrow: 1 }}>
-            Gestion Immo
+        <Typography variant="h6" component="div" align='left'  sx={{ flexGrow: 1 }}>
+            <Link to={`/home`}>Gestion Immo</Link>
           </Typography>
-              <Button color="inherit" title="Appartements"><HomeWorkIcon /></Button>
-              <Button color="inherit" title="Locataires"><EscalatorWarningIcon /></Button>
+              <Link to={`/flats`}><Button color="inherit" title="Appartements"><HomeWorkIcon /></Button></Link>
+              <Link to={`/tenants`}><Button color="inherit" title="Locataires"><EscalatorWarningIcon /></Button></Link>
               <Button color="inherit" title="Se déconnecter"><LogoutIcon /></Button>
         </Toolbar>
       </AppBar>
-      <Home />
       </header>
     </div>
   );
