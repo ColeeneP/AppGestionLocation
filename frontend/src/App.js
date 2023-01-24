@@ -60,7 +60,7 @@ export default function App() {
             Gestion Immo
           </Typography>
               <Button color="inherit" title="Appartements"><HomeWorkIcon /></Button>
-              <Button color="inherit" title="Appartements"><EscalatorWarningIcon /></Button>
+              <Button color="inherit" title="Locataires"><EscalatorWarningIcon /></Button>
               <Button color="inherit" title="Se déconnecter"><LogoutIcon /></Button>
         </Toolbar>
       </AppBar>
