@@ -16,7 +16,7 @@ public class FlatController {
     /**
      * Create - Add a new flat
      * @param flat An object flat
-     * @return The employee object saved
+     * @return The flat object saved
      */
     @PostMapping("/flat")
     public Flat createFlat(@RequestBody Flat flat) {
@@ -26,7 +26,7 @@ public class FlatController {
     /**
      * Read - Get one flat
      * @param id The id of the flat
-     * @return A Flat object fullfilled
+     * @return A Flat object fulfilled
      */
     @GetMapping("/flat/{id}")
     public Flat getFlat(@PathVariable("id") final Long id) {
