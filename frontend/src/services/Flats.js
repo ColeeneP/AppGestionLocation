@@ -4,27 +4,27 @@ import config from "../config.json";
 let authToken = localStorage.getItem('token');
 let header = {'Token': authToken};
 
-export const GetAllFlats = () => {
-    return axios.get(config.baseURL + `flats/getAllFlats/`,{ 
+export const GetFlats = () => {
+    return axios.get(config.baseURL + `flat/getFlats/`,{ 
         headers: header})
 }
 
-export const GetOneFlat = (id) => {
-    return axios.get(config.baseURL + `flats/getOneFlat/` + id,{ 
+export const GetFlat = (id) => {
+    return axios.get(config.baseURL + `flat/getFlat/` + id,{ 
         headers: header})
 }
 
 export const CreateFlat = (post) => {
-    return axios.post(config.baseURL + `flats/createFlat`, post, { 
+    return axios.post(config.baseURL + `flat/createFlat`, post, { 
         headers: header})
 }
 
-export const ModifyFlat = (id, post) => {
-    return axios.put(config.baseURL + `flats/modifyFlat/`+ id, post, { 
+export const UpdateFlat = (id, post) => {
+    return axios.put(config.baseURL + `flat/updateFlat/`+ id, post, { 
         headers: header})
 }
 
 export const DeleteFlat = (id) => {
-    return axios.delete(config.baseURL + `flats/deleteFlat/` + id,{ 
+    return axios.delete(config.baseURL + `flat/deleteFlat/` + id,{ 
         headers: header})
 }
