@@ -19,8 +19,8 @@ export const CreateInventory = (post) => {
         headers: header})
 }
 
-export const ModifyInventory = (id, post) => {
-    return axios.put(config.baseURL + `inventory/modifyInventory/`+ id, post, { 
+export const UpdateInventory = (id, post) => {
+    return axios.put(config.baseURL + `inventory/updateInventory/`+ id, post, { 
         headers: header})
 }
 
