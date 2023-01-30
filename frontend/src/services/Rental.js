@@ -4,13 +4,13 @@ import config from "../config.json";
 let authToken = localStorage.getItem('token');
 let header = {'Token': authToken};
 
-export const GetAllRentals = () => {
-    return axios.get(config.baseURL + `rental/getAllRentals/`,{ 
+export const GetRentals = () => {
+    return axios.get(config.baseURL + `rental/getRentals/`,{ 
         headers: header})
 }
 
-export const GetOneRental = (id) => {
-    return axios.get(config.baseURL + `rental/getOneRental/` + id,{ 
+export const GetRental = (id) => {
+    return axios.get(config.baseURL + `rental/getRental/` + id,{ 
         headers: header})
 }
 
@@ -19,8 +19,8 @@ export const CreateRental = (post) => {
         headers: header})
 }
 
-export const ModifyRental = (id, post) => {
-    return axios.put(config.baseURL + `rental/modifyRental/`+ id, post, { 
+export const UpdateRental = (id, post) => {
+    return axios.put(config.baseURL + `rental/updateRental/`+ id, post, { 
         headers: header})
 }
 
