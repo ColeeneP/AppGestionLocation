@@ -12,7 +12,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-import Home from './components/Home';
+import Home from './pages/Home';
 import { Link } from "react-router-dom";
 
 export default function App() {
