@@ -19,7 +19,7 @@ public class PaymentController {
      * @param payment An object payment
      * @return The payment object saved
      */
-    @PostMapping("/payment")
+    @PostMapping("/api/payment")
     public Payment createPayment(@RequestBody Payment payment) {
         return paymentService.savePayment(payment);
     }
@@ -29,7 +29,7 @@ public class PaymentController {
      * @param id The id of the payment
      * @return A Payment object fulfilled
      */
-    @GetMapping("/payment/{id}")
+    @GetMapping("/api/payment/{id}")
     public Payment getPayment(@PathVariable("id") final Long id) {
         Optional<Payment> payment = paymentService.getPayment(id);
         if(payment.isPresent()) {
@@ -43,7 +43,7 @@ public class PaymentController {
      * Read - Get all payments
      * @return - An Iterable object of Payments fulfilled
      */
-    @GetMapping("/payments")
+    @GetMapping("/api/payment")
     public Iterable<Payment> getPayments() {
         return paymentService.getPayments();
     }
@@ -54,7 +54,7 @@ public class PaymentController {
      * @param payment - The payment object updated
      * @return
      */
-    @PutMapping("/payment/{id}")
+    @PutMapping("/api/payment/{id}")
     public Payment updatePayment(@PathVariable("id") final Long id, @RequestBody Payment payment) {
         Optional<Payment> e = paymentService.getPayment(id);
         if(e.isPresent()) {
@@ -87,7 +87,7 @@ public class PaymentController {
      * Delete - Delete a payment
      * @param id - The id of the payment to delete
      */
-    @DeleteMapping("/payment/{id}")
+    @DeleteMapping("/api/payment/{id}")
     public void deletePayment(@PathVariable("id") final Long id) {
         paymentService.deletePayment(id);
     }

@@ -6,8 +6,8 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "flat")
-public class Flat {
+@Table(name = "property")
+public class Property {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

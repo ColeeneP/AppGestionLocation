@@ -1,6 +1,5 @@
 package com.studi.location.controller;
 
-import com.studi.location.models.Flat;
 import com.studi.location.models.Inventory;
 import com.studi.location.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ public class InventoryController {
      * @param inventory An object inventory
      * @return The inventory object saved
      */
-    @PostMapping("/inventory")
+    @PostMapping("/api/inventory")
     public Inventory createInventory(@RequestBody Inventory inventory) {
         return inventoryService.saveInventory(inventory);
     }
@@ -30,7 +29,7 @@ public class InventoryController {
      * @param id The id of the inventory
      * @return An Inventory object fulfilled
      */
-    @GetMapping("/inventory/{id}")
+    @GetMapping("/api/inventory/{id}")
     public Inventory getInventory(@PathVariable("id") final Long id) {
         Optional<Inventory> inventory = inventoryService.getInventory(id);
         if(inventory.isPresent()) {
@@ -44,7 +43,7 @@ public class InventoryController {
      * Read - Get all inventories
      * @return - An Iterable object of Inventories fulfilled
      */
-    @GetMapping("/inventories")
+    @GetMapping("/api/inventory")
     public Iterable<Inventory> getInventories() {
         return inventoryService.getInventories();
     }
@@ -55,7 +54,7 @@ public class InventoryController {
      * @param inventory - The inventory object updated
      * @return
      */
-    @PutMapping("/inventory/{id}")
+    @PutMapping("/api/inventory/{id}")
     public Inventory updateInventory(@PathVariable("id") final Long id, @RequestBody Inventory inventory) {
         Optional<Inventory> e = inventoryService.getInventory(id);
         if(e.isPresent()) {
@@ -88,7 +87,7 @@ public class InventoryController {
      * Delete - Delete an inventory
      * @param id - The id of the inventory to delete
      */
-    @DeleteMapping("/inventory/{id}")
+    @DeleteMapping("/api/inventory/{id}")
     public void deleteInventory(@PathVariable("id") final Long id) {
         inventoryService.deleteInventory(id);
     }

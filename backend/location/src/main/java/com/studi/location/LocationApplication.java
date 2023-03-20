@@ -19,10 +19,10 @@ public class LocationApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Class.forName("org.postgresql.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/immovable", "postgres", "Gospel34.");
+		Connection conn = DriverManager.getConnection("jdbc:postgresql://postgresql-coleene.alwaysdata.net:5432/coleene_studieval", "coleene", "DataBase2023");
 		System.out.println(conn);
 
-		String query = "SELECT * FROM flat";
+		String query = "SELECT * FROM property";
 
 		ResultSet results;
 
@@ -31,7 +31,7 @@ public class LocationApplication implements CommandLineRunner {
 
 			results = stmt.executeQuery(query);
 			while(results.next()){
-				System.out.println(results.getString(1)); }
+				System.out.println(results.getString(2)); }
 		}
 		catch(Exception e) {
 			e.printStackTrace();

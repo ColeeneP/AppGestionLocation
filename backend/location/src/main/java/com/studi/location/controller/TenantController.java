@@ -19,7 +19,7 @@ public class TenantController {
      * @param tenant An object tenant
      * @return The Tenant object saved
      */
-    @PostMapping("/tenant")
+    @PostMapping("/api/tenant")
     public Tenant createTenant(@RequestBody Tenant tenant) {
         return tenantService.saveTenant(tenant);
     }
@@ -29,7 +29,7 @@ public class TenantController {
      * @param id The id of the tenant
      * @return A Tenant object fulfilled
      */
-    @GetMapping("/tenant/{id}")
+    @GetMapping("/api/tenant/{id}")
     public Tenant getTenant(@PathVariable("id") final Long id) {
         Optional<Tenant> tenant = tenantService.getTenant(id);
         if(tenant.isPresent()) {
@@ -43,7 +43,7 @@ public class TenantController {
      * Read - Get all tenants
      * @return - An Iterable object of Tenants fulfilled
      */
-    @GetMapping("/tenants")
+    @GetMapping("/api/tenant")
     public Iterable<Tenant> getTenants() {
         return tenantService.getTenants();
     }
@@ -54,7 +54,7 @@ public class TenantController {
      * @param tenant - The tenant object updated
      * @return
      */
-    @PutMapping("/tenant/{id}")
+    @PutMapping("/api/tenant/{id}")
     public Tenant updateTenant(@PathVariable("id") final Long id, @RequestBody Tenant tenant) {
         Optional<Tenant> e = tenantService.getTenant(id);
         if(e.isPresent()) {
@@ -91,7 +91,7 @@ public class TenantController {
      * Delete - Delete a tenant
      * @param id - The id of the tenant to delete
      */
-    @DeleteMapping("/tenant/{id}")
+    @DeleteMapping("/api/tenant/{id}")
     public void deleteTenant(@PathVariable("id") final Long id) {
         tenantService.deleteTenant(id);
     }
