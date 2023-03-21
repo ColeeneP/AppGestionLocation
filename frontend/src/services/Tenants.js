@@ -5,26 +5,26 @@ let authToken = localStorage.getItem('token');
 let header = {'Token': authToken};
 
 export const GetTenants = () => {
-    return axios.get(config.baseURL + `tenants/getTenants/`,{ 
+    return axios.get(config.baseURL + `api/tenant/`,{ 
         headers: header})
 }
 
 export const GetTenant = (id) => {
-    return axios.get(config.baseURL + `tenants/getTenant/` + id,{ 
+    return axios.get(config.baseURL + `api/tenant/` + id,{ 
         headers: header})
 }
 
 export const CreateTenant = (post) => {
-    return axios.post(config.baseURL + `tenants/createTenant`, post, { 
+    return axios.post(config.baseURL + `api/tenant`, post, { 
         headers: header})
 }
 
 export const UpdateTenant = (id, post) => {
-    return axios.put(config.baseURL + `tenants/updateTenant/`+ id, post, { 
+    return axios.put(config.baseURL + `api/tenant/`+ id, post, { 
         headers: header})
 }
 
 export const DeleteTenant = (id) => {
-    return axios.delete(config.baseURL + `tenants/deleteTenant/` + id,{ 
+    return axios.delete(config.baseURL + `api/tenant/` + id,{ 
         headers: header})
 }

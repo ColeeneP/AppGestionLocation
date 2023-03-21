@@ -5,26 +5,26 @@ let authToken = localStorage.getItem('token');
 let header = {'Token': authToken};
 
 export const GetPayments = () => {
-    return axios.get(config.baseURL + `payment/getPayments/`,{ 
+    return axios.get(config.baseURL + `api/payment/`,{ 
         headers: header})
 }
 
 export const GetPayment = (id) => {
-    return axios.get(config.baseURL + `payment/getPayment/` + id,{ 
+    return axios.get(config.baseURL + `api/payment/` + id,{ 
         headers: header})
 }
 
 export const CreatePayment = (post) => {
-    return axios.post(config.baseURL + `payment/createPayment`, post, { 
+    return axios.post(config.baseURL + `api/payment`, post, { 
         headers: header})
 }
 
 export const UpdatePayment = (id, post) => {
-    return axios.put(config.baseURL + `payment/updatePayment/`+ id, post, { 
+    return axios.put(config.baseURL + `api/payment/`+ id, post, { 
         headers: header})
 }
 
 export const DeletePayment = (id) => {
-    return axios.delete(config.baseURL + `payment/deletePayment/` + id,{ 
+    return axios.delete(config.baseURL + `api/payment/` + id,{ 
         headers: header})
 }

@@ -6,7 +6,7 @@ import App from './App.js';
 import reportWebVitals from './reportWebVitals';
 import Home from './pages/Home';
 import Tenants from './pages/Tenants';
-import Flats from './pages/Flats';
+import Property from './pages/Property';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,7 +15,7 @@ root.render(
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/tenants" element={<Tenants />} />
-        <Route path="/flats" element={<Flats />} />
+        <Route path="/property" element={<Property />} />
       </Routes>
     <App /> 
     </BrowserRouter>

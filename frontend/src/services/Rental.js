@@ -5,26 +5,26 @@ let authToken = localStorage.getItem('token');
 let header = {'Token': authToken};
 
 export const GetRentals = () => {
-    return axios.get(config.baseURL + `rental/getRentals/`,{ 
+    return axios.get(config.baseURL + `api/rental/`,{ 
         headers: header})
 }
 
 export const GetRental = (id) => {
-    return axios.get(config.baseURL + `rental/getRental/` + id,{ 
+    return axios.get(config.baseURL + `api/rental/` + id,{ 
         headers: header})
 }
 
 export const CreateRental = (post) => {
-    return axios.post(config.baseURL + `rental/createRental`, post, { 
+    return axios.post(config.baseURL + `api/rental`, post, { 
         headers: header})
 }
 
 export const UpdateRental = (id, post) => {
-    return axios.put(config.baseURL + `rental/updateRental/`+ id, post, { 
+    return axios.put(config.baseURL + `api/rental/`+ id, post, { 
         headers: header})
 }
 
 export const DeleteRental = (id) => {
-    return axios.delete(config.baseURL + `rental/deleteRental/` + id,{ 
+    return axios.delete(config.baseURL + `api/rental/` + id,{ 
         headers: header})
 }

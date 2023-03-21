@@ -1,19 +1,11 @@
-import './App.css';
+import './styles/styles.css';
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Toolbar from '@mui/material/Toolbar';
-import LogoutIcon from '@mui/icons-material/Logout';
-import EscalatorWarningIcon from '@mui/icons-material/EscalatorWarning';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import HomeWorkIcon from '@mui/icons-material/HomeWork';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Home from './pages/Home';
+import Header from './components/Header';
 import { Link } from "react-router-dom";
+
 
 export default function App() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -28,9 +20,11 @@ export default function App() {
   const isMobile = useMediaQuery(useTheme().breakpoints.down('md'));
 
   return (
-    <div className="App">
-      <header className="App-header">
-      <AppBar position="fixed" top='0' sx={{ display: isMobile ? 'block' : 'none'}}>
+    <body className="App">
+      <Header />
+      <Home />
+      {/*<header className="App-header">
+       <AppBar position="fixed" top='0' sx={{ display: isMobile ? 'block' : 'none'}}>
         <Toolbar>
         <Link to={`/home`}><Typography variant="h6" component="div" align='left'  sx={{ flexGrow: 1 }}>
             Gestion Immo
@@ -64,8 +58,8 @@ export default function App() {
               <Link to={`/tenants`}><Button color="inherit" title="Locataires"><EscalatorWarningIcon /></Button></Link>
               <Button color="inherit" title="Se déconnecter"><LogoutIcon /></Button>
         </Toolbar>
-      </AppBar>
-      </header>
-    </div>
+      </AppBar> 
+      </header>*/}
+    </body>
   );
 }

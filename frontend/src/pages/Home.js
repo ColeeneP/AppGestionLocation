@@ -10,13 +10,15 @@ export default function Home(){
     // }, [])
 
     return (
-        <div><h2>Liste des derniers paiements reçus :</h2>
+        <main id="main_dashboard">
+            <img class="background-image" src="https://as2.ftcdn.net/v2/jpg/00/97/79/05/1000_F_97790501_WzLIeayLrlQotVDdM6gERYVeRGQJ5GKR.jpg" />
+            <h2>Liste des derniers paiements reçus :</h2>
             {payments.map((payment) => {
                 return (
                     <p>{payment.amount + '€' + ' ' + payment.origin + ' ' + payment.tenant + ' ' + payment.date}</p>
                 );
             })}
-        </div>
+        </main>
     );
 
 };
