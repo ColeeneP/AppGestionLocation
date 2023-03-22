@@ -14,7 +14,8 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long rental;
+    @ManyToOne
+    private Property property;
 
     private Enum status;
 
@@ -22,12 +23,12 @@ public class Inventory {
 
     private String notes;
 
-    public Long getRental() {
-        return rental;
+    public Property getProperty() {
+        return property;
     }
 
-    public void setRental(Long rental) {
-        this.rental = rental;
+    public void setProperty(Property property) {
+        this.property = property;
     }
 
     public Enum getStatus() {

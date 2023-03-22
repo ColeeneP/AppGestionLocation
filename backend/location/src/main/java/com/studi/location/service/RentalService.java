@@ -1,6 +1,5 @@
 package com.studi.location.service;
 
-import com.studi.location.models.Flat;
 import com.studi.location.models.Rental;
 import com.studi.location.repository.RentalRepository;
 import lombok.Data;

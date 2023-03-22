@@ -1,6 +1,8 @@
 package com.studi.location.controller;
 
 import com.studi.location.models.Inventory;
+import com.studi.location.models.Property;
+import com.studi.location.models.Rental;
 import com.studi.location.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -60,9 +62,9 @@ public class InventoryController {
         if(e.isPresent()) {
             Inventory currentInventory = e.get();
 
-            Long rental = inventory.getRental();
-            if(rental != null) {
-                currentInventory.setRental(rental);
+            Property property = inventory.getProperty();
+            if(property != null) {
+                currentInventory.setProperty(property);
             }
             Enum status = inventory.getStatus();
             if(status != null) {

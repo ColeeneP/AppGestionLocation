@@ -93,4 +93,16 @@ public class Property {
     public void setAvailable(Boolean available) {
         this.available = available;
     }
+
+    public Property(Long id, String address, String additional, Integer postalCode, String city, Float rent, Float charges, Float deposit, Boolean available) {
+        this.id = id;
+        this.address = address;
+        this.additional = additional;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.rent = rent;
+        this.charges = charges;
+        this.deposit = deposit;
+        this.available = available;
+    }
 }

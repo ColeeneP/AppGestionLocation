@@ -19,7 +19,7 @@ public class PropertyService {
         return propertyRepository.findById(id);
     }
 
-    public Iterable<Property> getProperty() {
+    public Iterable<Property> getAllProperties() {
         return propertyRepository.findAll();
     }
 

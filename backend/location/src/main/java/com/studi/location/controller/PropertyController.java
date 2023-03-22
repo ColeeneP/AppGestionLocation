@@ -43,8 +43,8 @@ public class PropertyController {
      * @return - An Iterable object of Properties fullfilled
      */
     @GetMapping("/api/property")
-    public Iterable<Property> getProperty() {
-        return propertyService.getProperty();
+    public Iterable<Property> getAllProperties() {
+        return propertyService.getAllProperties();
     }
 
     /**
