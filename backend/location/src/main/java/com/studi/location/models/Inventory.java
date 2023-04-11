@@ -15,6 +15,7 @@ public class Inventory {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name="id", insertable=false, updatable=false)
     private Property property;
 
     private Enum status;

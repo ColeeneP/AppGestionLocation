@@ -65,7 +65,7 @@ public class PropertyController {
             }
             String additional = property.getAdditional();
             if(additional != null) {
-                currentProperty.setAdditional(additional);;
+                currentProperty.setAdditional(additional);
             }
             Integer postalCode = property.getPostalCode();
             if(postalCode != null) {
@@ -73,23 +73,23 @@ public class PropertyController {
             }
             String city = property.getCity();
             if(city != null) {
-                currentProperty.setCity(city);;
+                currentProperty.setCity(city);
             }
             Float rent = property.getRent();
             if(rent != null) {
-                currentProperty.setRent(rent);;
+                currentProperty.setRent(rent);
             }
             Float charges = property.getCharges();
             if(charges != null) {
-                currentProperty.setCharges(charges);;
+                currentProperty.setCharges(charges);
             }
             Float deposit = property.getDeposit();
             if(deposit != null) {
-                currentProperty.setDeposit(deposit);;
+                currentProperty.setDeposit(deposit);
             }
             Boolean available = property.getAvailable();
             if(available != null) {
-                currentProperty.setAvailable(available);;
+                currentProperty.setAvailable(available);
             }
             propertyService.saveProperty(currentProperty);
             return currentProperty;

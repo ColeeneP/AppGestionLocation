@@ -3,6 +3,7 @@ package com.studi.location.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -29,6 +30,8 @@ public class Property {
     private Float deposit;
 
     private Boolean available;
+
+
 
     public String getAddress() {
         return address;
@@ -94,15 +97,4 @@ public class Property {
         this.available = available;
     }
 
-    public Property(Long id, String address, String additional, Integer postalCode, String city, Float rent, Float charges, Float deposit, Boolean available) {
-        this.id = id;
-        this.address = address;
-        this.additional = additional;
-        this.postalCode = postalCode;
-        this.city = city;
-        this.rent = rent;
-        this.charges = charges;
-        this.deposit = deposit;
-        this.available = available;
-    }
 }
