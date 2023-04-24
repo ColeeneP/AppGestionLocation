@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useParams } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GetProperties } from "../services/Property";
 
 export const useProperties = (events) => {

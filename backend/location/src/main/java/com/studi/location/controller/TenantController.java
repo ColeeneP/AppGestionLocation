@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 public class TenantController {
 
     @Autowired

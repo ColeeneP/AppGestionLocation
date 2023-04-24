@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { GetProperties } from "../services/Property";
 import { useProperties } from "../hooks/useProperties";
 
 export default function Property() {

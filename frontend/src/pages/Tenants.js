@@ -1,15 +1,8 @@
-import { useEffect, useState } from "react";
-import { GetTenants } from "../services/Tenants";
+import { useTenants } from "../hooks/useTenants";
 
 export default function Tenants() {
-    const[tenants, setTenants] = useState([
-        {firstname: 'John', lastname: 'Doe', phone: '0601020304', email: 'john.doe@mail.com'},
-        {firstname: 'Julie', lastname: 'Dupont', phone: '0604030201', email: 'julie.dupont@mail.com'}
-    ]);
-
-    // useEffect(() => {
-    //     GetTenants().then(res => setTenants(res.content)).catch(error => alert(error.message));
-    // }, [])
+    const {tenants, setTenants} = useTenants();
+    console.log(tenants);
 
     return(
         <div>
@@ -19,7 +12,9 @@ export default function Tenants() {
 
                 <section class="tenants_section">
                 {tenants.map(tenant => {
-                        <><button class="adding_button">{tenant.firstname + ' ' + tenant.lastname} <i class="fa-solid fa-user"></i></button> </>                  
+                    return(
+                        <><button class="adding_button">{tenant.firstname + ' ' + tenant.lastname} <i class="fa-solid fa-user"></i></button> </>   
+                    )                   
                     })}
                 </section>
             </main>
