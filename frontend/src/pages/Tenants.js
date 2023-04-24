@@ -2,7 +2,6 @@ import { useTenants } from "../hooks/useTenants";
 
 export default function Tenants() {
     const {tenants, setTenants} = useTenants();
-    console.log(tenants);
 
     return(
         <div>
