@@ -1,6 +1,8 @@
 package com.studi.location.controller;
 
+import com.studi.location.models.Property;
 import com.studi.location.models.Rental;
+import com.studi.location.models.Tenant;
 import com.studi.location.service.RentalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 public class RentalController {
 
     @Autowired
@@ -59,11 +62,11 @@ public class RentalController {
         if(e.isPresent()) {
             Rental currentRental = e.get();
 
-            Long flat = rental.getFlat();
-            if(flat != null) {
-                currentRental.setFlat(flat);
+            Property property = rental.getProperty();
+            if(property != null) {
+                currentRental.setProperty(property);
             }
-            Long tenant = rental.getTenant();
+            Tenant tenant = rental.getTenant();
             if(tenant != null) {
                 currentRental.setTenant(tenant);
             }

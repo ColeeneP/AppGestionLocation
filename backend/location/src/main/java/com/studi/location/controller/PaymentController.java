@@ -1,6 +1,7 @@
 package com.studi.location.controller;
 
 import com.studi.location.models.Payment;
+import com.studi.location.models.Rental;
 import com.studi.location.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +10,7 @@ import java.sql.Date;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 public class PaymentController {
 
     @Autowired
@@ -60,7 +62,7 @@ public class PaymentController {
         if(e.isPresent()) {
             Payment currentPayment = e.get();
 
-            Long rental = payment.getRental();
+            Rental rental = payment.getRental();
             if(rental != null) {
                 currentPayment.setRental(rental);
             }
@@ -72,7 +74,7 @@ public class PaymentController {
             if(origin != null) {
                 currentPayment.setOrigin(origin);
             }
-            Float amount = payment.getAmount();
+            String amount = payment.getAmount();
             if(amount != null) {
                 currentPayment.setAmount(amount);
             }

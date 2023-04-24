@@ -13,25 +13,29 @@ public class Rental {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long flat;
+    @ManyToOne
+    @JoinColumn(name="property", insertable=false, updatable=false)
+    private Property property;
 
-    private Long tenant;
+    @ManyToOne
+    @JoinColumn(name="tenant", insertable=false, updatable=false)
+    private Tenant tenant;
 
     private Boolean deposit;
 
-    public Long getFlat() {
-        return flat;
+    public Property getProperty() {
+        return property;
     }
 
-    public void setFlat(Long flat) {
-        this.flat = flat;
+    public void setProperty(Property property) {
+        this.property = property;
     }
 
-    public Long getTenant() {
+    public Tenant getTenant() {
         return tenant;
     }
 
-    public void setTenant(Long tenant) {
+    public void setTenant(Tenant tenant) {
         this.tenant = tenant;
     }
 

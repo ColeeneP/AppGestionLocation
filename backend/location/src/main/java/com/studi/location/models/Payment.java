@@ -14,19 +14,21 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long rental;
+    @ManyToOne
+    @JoinColumn(name="rental", insertable=false, updatable=false)
+    private Rental rental;
 
     private Date date;
 
     private String origin;
 
-    private Float amount;
+    private String amount;
 
-    public Long getRental() {
+    public Rental getRental() {
         return rental;
     }
 
-    public void setRental(Long rental) {
+    public void setRental(Rental rental) {
         this.rental = rental;
     }
 
@@ -46,11 +48,11 @@ public class Payment {
         this.origin = origin;
     }
 
-    public Float getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(Float amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 }
