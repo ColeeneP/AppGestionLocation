@@ -30,7 +30,7 @@ public class Property {
     private Float deposit;
 
     private Boolean available;
-    
+
 
     public String getAddress() {
         return address;

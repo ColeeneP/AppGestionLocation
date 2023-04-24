@@ -14,6 +14,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/tenants" element={<Tenants />} />
         <Route path="/property" element={<Property />} />
       </Routes>
