@@ -7,11 +7,22 @@ export default function Header() {
 
     return(
         <header>
-            <h1>GEST'LOC</h1>
-            {`${matches ?
-                 <nav><FontAwesomeIcon icon={faBars} /></nav> 
-                 : <nav></nav> }`}
-            
+        <h1>Gest'Loc</h1>
+            <nav class="desktop_nav">
+                <ul>
+                    <li>Accueil</li>
+                    <li>Nos locataires</li>
+                    <li>Nos biens</li>
+                </ul>
+            </nav>
+            <nav class="mobile_nav">
+                <div><div>Menu</div>
+                <ul>
+                    <li>Accueil</li>
+                    <li>Nos locataires</li>
+                    <li>Nos biens</li>
+                </ul></div>
+            </nav>
         </header>
     )
 };

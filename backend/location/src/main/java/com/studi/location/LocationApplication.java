@@ -22,7 +22,7 @@ public class LocationApplication implements CommandLineRunner {
 		Connection conn = DriverManager.getConnection("jdbc:postgresql://postgresql-coleene.alwaysdata.net:5432/coleene_studieval", "coleene", "DataBase2023");
 		System.out.println(conn);
 
-		String query = "SELECT * FROM inventory";
+		String query = "SELECT * FROM Inventory i JOIN Property p ON i.property = p.id";
 
 		ResultSet results;
 
@@ -31,7 +31,7 @@ public class LocationApplication implements CommandLineRunner {
 
 			results = stmt.executeQuery(query);
 			while(results.next()){
-				System.out.println(results.getString(2)); }
+				System.out.println(results.getString("status")); }
 		}
 		catch(Exception e) {
 			e.printStackTrace();

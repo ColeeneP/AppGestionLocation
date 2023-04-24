@@ -1,0 +1,21 @@
+
+
+.adding_button {
+    margin: 15px 0;
+    
+    width: 100%;
+    height: 40px;
+    border: 1px solid $main_color;
+    border-radius: 5px;
+    background-color: $main_color;
+    color: $text_color;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .fa-solid, .fa-regular {
+        width: 15px;
+    }
+}

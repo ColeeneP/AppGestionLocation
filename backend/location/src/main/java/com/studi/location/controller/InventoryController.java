@@ -5,8 +5,11 @@ import com.studi.location.models.Property;
 import com.studi.location.models.Rental;
 import com.studi.location.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.rmi.ServerException;
 import java.sql.Date;
 import java.util.Optional;
 
@@ -34,8 +37,8 @@ public class InventoryController {
     @GetMapping("/api/inventory/{id}")
     public Inventory getInventory(@PathVariable("id") final Long id) {
         Optional<Inventory> inventory = inventoryService.getInventory(id);
-        if(inventory.isPresent()) {
-            return inventory.get();
+        if (inventory.isPresent()) {
+            return new ResponseEntity<>(inventory.get(), HttpStatus.OK).getBody();
         } else {
             return null;
         }
@@ -46,8 +49,8 @@ public class InventoryController {
      * @return - An Iterable object of Inventories fulfilled
      */
     @GetMapping("/api/inventory")
-    public Iterable<Inventory> getInventories() {
-        return inventoryService.getInventories();
+    public Iterable<Inventory> getAllInventories() {
+        return inventoryService.getAllInventories();
     }
 
     /**
@@ -66,7 +69,7 @@ public class InventoryController {
             if(property != null) {
                 currentInventory.setProperty(property);
             }
-            Enum status = inventory.getStatus();
+            Inventory.Status status = inventory.getStatus();
             if(status != null) {
                 currentInventory.setStatus(status);
             }

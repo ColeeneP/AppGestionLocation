@@ -4,21 +4,27 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Enumeration;
 
 @Data
 @Entity
 @Table(name = "inventory")
 public class Inventory {
+    public enum Status {
+        ingoing,
+        outgoing
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name="id", insertable=false, updatable=false)
+    @JoinColumn(name="property", insertable=false, updatable=false)
     private Property property;
 
-    private Enum status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     private Date date;
 
@@ -32,11 +38,11 @@ public class Inventory {
         this.property = property;
     }
 
-    public Enum getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(Enum status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
