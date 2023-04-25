@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import Home from './pages/Home';
 import Tenants from './pages/Tenants';
 import Property from './pages/Property';
+import AddTenant from './scenes/AddTenant';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,6 +18,7 @@ root.render(
         <Route path="/" element={<Home />} />
         <Route path="/tenants" element={<Tenants />} />
         <Route path="/property" element={<Property />} />
+        <Route path="/createTenant" element={<AddTenant />} />
       </Routes>
     <App /> 
     </BrowserRouter>

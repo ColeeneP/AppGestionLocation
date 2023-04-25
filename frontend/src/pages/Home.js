@@ -1,5 +1,6 @@
 import { usePayments } from "../hooks/usePayments";
 import Header from "../components/Header";
+import { Link } from "react-router-dom";
 
 export default function Home(){ 
     const {payments, setPayments} = usePayments();
@@ -12,7 +13,7 @@ export default function Home(){
         
         
                 <section class="actions">
-                    <button class="adding_button">Ajouter un locataire <i class="fa-solid fa-user"></i></button>
+                <Link to="/CreateTenant"><button class="adding_button">Ajouter un locataire <i class="fa-solid fa-user"></i></button></Link>
                 <button class="adding_button">Ajouter un bien <i class="fa-solid fa-building"></i></button>
                 <button class="adding_button">Ajouter un paiement <i class="fa-regular fa-credit-card"></i></button>
                 </section>
