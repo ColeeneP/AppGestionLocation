@@ -1,5 +1,6 @@
 import { useTenants } from "../hooks/useTenants";
 import Header from "../components/Header";
+import { Link } from "react-router-dom";
 
 export default function Tenants() {
     const {tenants, setTenants} = useTenants();
@@ -14,7 +15,7 @@ export default function Tenants() {
                 <section class="tenants_section">
                 {tenants.map(tenant => {
                     return(
-                        <><button class="adding_button">{tenant.firstname + ' ' + tenant.lastname} <i class="fa-solid fa-user"></i></button> </>   
+                        <><Link to={`/oneTenant/${tenant.id}`}><button class="adding_button">{tenant.firstname + ' ' + tenant.lastname} <i class="fa-solid fa-user"></i></button></Link></>   
                     )                   
                     })}
                 </section>

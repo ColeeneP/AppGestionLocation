@@ -19,8 +19,6 @@ export default function OneProperty() {
         GetProperty(id).then(res => {setProperty(res.data);}).catch(error => error)
     }, [])
 
-        // { icon: <PictureAsPdfIcon />, name: 'PDF' },
-
     return (
         <div>
             <Header />

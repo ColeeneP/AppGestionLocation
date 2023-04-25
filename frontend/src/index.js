@@ -11,6 +11,7 @@ import AddTenant from './scenes/AddTenant';
 import AddProperty from './scenes/AddProperty';
 import AddPayment from './scenes/AddPayment';
 import OneProperty from './pages/OneProperty';
+import OneTenant from './pages/OneTenant';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -25,6 +26,7 @@ root.render(
         <Route path="/createProperty" element={<AddProperty />} />
         <Route path="/createPayment" element={<AddPayment />} />
         <Route path="/oneProperty/:id" element={<OneProperty />}/>
+        <Route path="/oneTenant/:id" element={<OneTenant />}/>
       </Routes>
     <App /> 
     </BrowserRouter>
