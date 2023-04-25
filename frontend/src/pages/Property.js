@@ -1,9 +1,12 @@
 import { useProperties } from "../hooks/useProperties";
+import Header from "../components/Header";
 
 export default function Property() {
     const {properties, setProperties} = useProperties();
 
     return (
+        <div>
+        <Header />
         <main id="main_property">
         <h2>Nos biens</h2>
 
@@ -39,5 +42,6 @@ export default function Property() {
             })}
         </section>
         </main>
+        </div>
     );
 };

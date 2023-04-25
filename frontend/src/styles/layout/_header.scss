@@ -11,17 +11,32 @@ header {
     justify-content: space-between;
     align-items: center;
 
-    h1 {
+    position: fixed;
+    top: 0;
+    margin-bottom: 20px;
+
+    a {
+        text-decoration: none;
         margin: 0;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 26px;
-        position: absolute;
-        left: 18px;
+        color: $text_color;
+
+        &:hover {
+            color: $text_color;
+        }
+
+        h1 {
+            margin: 0 0 0 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 26px;
+        }
+
     }
 
+
+
     nav {
-        position: absolute;
+        // position: absolute;
         right: 18px;
 
         div {
@@ -39,6 +54,7 @@ header {
                 list-style: none;
                 visibility: hidden;
                 background-color: $main_color;
+                border-radius: 20px;
 
                 display: flex;
                 flex-direction: column;

@@ -21,7 +21,8 @@ export default function App() {
 
   return (
     <body className="App">
-      <Header />
+      
+
       {/*<header className="App-header">
        <AppBar position="fixed" top='0' sx={{ display: isMobile ? 'block' : 'none'}}>
         <Toolbar>
