@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Tenants from './pages/Tenants';
 import Property from './pages/Property';
 import AddTenant from './scenes/AddTenant';
+import AddProperty from './scenes/AddProperty';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,6 +20,7 @@ root.render(
         <Route path="/tenants" element={<Tenants />} />
         <Route path="/property" element={<Property />} />
         <Route path="/createTenant" element={<AddTenant />} />
+        <Route path="/createProperty" element={<AddProperty />} />
       </Routes>
     <App /> 
     </BrowserRouter>
