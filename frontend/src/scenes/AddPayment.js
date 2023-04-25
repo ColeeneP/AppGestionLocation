@@ -8,11 +8,11 @@ export default function AddPayment() {
     const navigate = useNavigate();
     const {rentals, setRentals} = useRentals();
 
-    const [rental, setRental] = useState(String);
+    const [rental, setRental] = useState(0);
     const [date, setDate] = useState(Date);
     const [origin, setOrigin] = useState(String);
     const [amount, setAmount] = useState(String);
-    console.log(rentals);
+    console.log(rental);
 
     const handleSubmit = (e) => {
         

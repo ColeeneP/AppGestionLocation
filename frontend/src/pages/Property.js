@@ -1,4 +1,6 @@
 import { useProperties } from "../hooks/useProperties";
+import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 
 export default function Property() {
@@ -14,7 +16,7 @@ export default function Property() {
             {properties.map((property) => {
                 if(property.available == false) {
                     return (
-                        <div class="property_card">
+                        <Link to={`/oneProperty/${property.id}`}><div class="property_card">
                         <div class="card_image">
                         <img src="https://as2.ftcdn.net/v2/jpg/04/39/24/79/1000_F_439247968_J5nC39sqagXLVBTRGXlt2HZgaf3LDriM.jpg" />
                         </div>
@@ -24,10 +26,10 @@ export default function Property() {
                                 <div class="deposit">Caution: {property.deposit}€</div>
                                 <div class="availability">Non disponible</div>
                         </div>
-                        </div>          
+                        </div></Link>          
                 )} else {
                     return (
-                        <div class="property_card">
+                        <Link to={`/oneProperty/${property.id}`}><div class="property_card">
                         <div class="card_image">
                         <img src="https://as2.ftcdn.net/v2/jpg/04/39/24/79/1000_F_439247968_J5nC39sqagXLVBTRGXlt2HZgaf3LDriM.jpg" />
                         </div>
@@ -37,7 +39,7 @@ export default function Property() {
                                 <div class="deposit">Caution: {property.deposit}€</div>
                                 <div class="availability">Disponible</div>
                         </div>
-                        </div>
+                        </div></Link>
                     )}
             })}
         </section>
