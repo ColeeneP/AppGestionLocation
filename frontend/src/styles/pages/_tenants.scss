@@ -13,8 +13,24 @@ body {
 
 h2 {
     text-align: center;
+    padding-top: 10%;
 }
 
 .tenants_section {
     margin: 50px 10.5% 0 10.5%;
+}
+
+.desktop_tenant {
+    display: none;
+}
+
+
+@media (min-width: 800px) {
+    .mobile_tenant {
+        display: none;
+    }
+
+    .desktop_tenant {
+        display: block;
+    }
 }

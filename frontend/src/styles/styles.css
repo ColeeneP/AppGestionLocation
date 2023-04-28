@@ -8,6 +8,16 @@ body {
   position: relative;
 }
 
+a {
+  text-decoration: none;
+  color: #5B2E48;
+  display: unset;
+}
+a:hover {
+  text-decoration: none;
+  color: #5B2E48;
+}
+
 .adding_button {
   margin: 15px 0;
   width: 100%;
@@ -23,6 +33,11 @@ body {
 }
 .adding_button .fa-solid, .adding_button .fa-regular {
   width: 15px;
+}
+.adding_button .text_button {
+  width: 100%;
+  text-align: justify;
+  text-justify: distribute;
 }
 
 .submit_button {
@@ -110,6 +125,16 @@ header .desktop_nav {
   header .desktop_nav {
     display: block;
   }
+  header .desktop_nav ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    list-style: none;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0;
+    margin-right: 20px;
+  }
   header .mobile_nav {
     display: none;
   }
@@ -153,6 +178,10 @@ body .background-image {
   margin: 10px 0 10px 0;
 }
 
+.main_property {
+  margin-top: 10%;
+}
+
 .property_card {
   display: flex;
   flex-direction: row;
@@ -186,6 +215,18 @@ body .background-image {
   background: rgba(206, 185, 146, 0.8);
 }
 
+@media (min-width: 800px) {
+  .property_section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .property_card {
+    justify-content: space-evenly;
+    min-width: 350px;
+    max-width: 500px;
+  }
+}
 body {
   height: 100vh;
 }
@@ -201,8 +242,58 @@ body .background-image {
 
 h2 {
   text-align: center;
+  padding-top: 10%;
 }
 
 .tenants_section {
   margin: 50px 10.5% 0 10.5%;
+}
+
+.desktop_tenant {
+  display: none;
+}
+
+@media (min-width: 800px) {
+  .mobile_tenant {
+    display: none;
+  }
+  .desktop_tenant {
+    display: block;
+  }
+}
+.tenant_info {
+  background: rgba(206, 185, 146, 0.2);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 10% 10.5%;
+  padding: 0 10px 30px 10px;
+}
+.tenant_info .header_info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.tenant_info h2 {
+  text-align: left;
+  width: 60%;
+  padding: 0;
+}
+.tenant_info .detail_info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 0 20px 0px 20px;
+}
+.tenant_info .detail_info div {
+  width: 100%;
+}
+
+@media (min-width: 800px) {
+  .detail_info {
+    padding: 0 30px 0 30px;
+  }
 }/*# sourceMappingURL=styles.css.map */

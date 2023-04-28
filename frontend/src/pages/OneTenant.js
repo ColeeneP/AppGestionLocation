@@ -23,13 +23,23 @@ export default function OneTenant() {
     return (
         <div>
         <Header />
-        <div class="tenant_info"><PersonIcon /><h2>{tenant.firstname}<br />{tenant.lastname}</h2><br />
-        nom : {tenant.lastname}<br />
-        prénom : {tenant.firstname}<br />
-        date de naissance : {tenant.birthday}
-        <br /><br />
-        téléphone : {tenant.phone}<br />
-        email : {tenant.email}
+        <div class="tenant_info">
+            <div class="header_info">
+                <PersonIcon sx={{ fontSize: 100 }}/>
+                <h2>{tenant.firstname} {tenant.lastname}</h2>   
+            </div>
+            <div class="detail_info"><div>nom </div><div>{tenant.lastname}</div><br /></div>
+            <div class="detail_info"><div>prénom</div><div>{tenant.firstname}</div><br /></div>
+            <div class="detail_info"><div>date de naissance</div><div>{tenant.birthday}</div> </div><br />
+            <div class="detail_info"><div>téléphone</div><div>{tenant.phone}</div><br /></div>
+            <div class="detail_info"><div>email</div><div>{tenant.email}</div></div>
+                
+                
+                
+                
+                
+                           
+            
         </div>
         <div class="tenant_property">
             <h2>Biens loués</h2>

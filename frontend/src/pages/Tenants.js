@@ -12,10 +12,21 @@ export default function Tenants() {
             <main id="main_tenant">
                 <h2>Nos locataires</h2>
 
-                <section class="tenants_section">
+                <section class="tenants_section mobile_tenant">
                 {tenants.map(tenant => {
                     return(
                         <><Link to={`/oneTenant/${tenant.id}`}><button class="adding_button">{tenant.firstname + ' ' + tenant.lastname} <i class="fa-solid fa-user"></i></button></Link></>   
+                    )                   
+                    })}
+                </section>
+                <section class="tenants_section desktop_tenant">
+                {tenants.map(tenant => {
+                    return(
+                        <><Link to={`/oneTenant/${tenant.id}`}><button class="adding_button">
+                            <div class="text_button">{tenant.firstname + ' ' + tenant.lastname + ' '}</div> 
+                            <div class="text_button">{tenant.email + ' '}</div> 
+                            <div class="text_button">{tenant.phone}</div> 
+                            <i class="fa-solid fa-user"></i></button></Link></>   
                     )                   
                     })}
                 </section>

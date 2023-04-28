@@ -82,6 +82,17 @@ header {
     header {
         .desktop_nav {
             display: block;
+
+            ul {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap; 
+                list-style: none;
+                justify-content: space-between;
+                gap: 20px;
+                padding: 0;
+                margin-right: 20px;
+            }
         }
 
         .mobile_nav {

@@ -29,7 +29,7 @@ export default function Property() {
                         </div></Link>          
                 )} else {
                     return (
-                        <Link to={`/oneProperty/${property.id}`}><div class="property_card">
+                        <Link to={`/oneProperty/${property.id}`}><div class="property_card available">
                         <div class="card_image">
                         <img src="https://as2.ftcdn.net/v2/jpg/04/39/24/79/1000_F_439247968_J5nC39sqagXLVBTRGXlt2HZgaf3LDriM.jpg" />
                         </div>
