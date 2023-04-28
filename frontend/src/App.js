@@ -20,7 +20,7 @@ export default function App() {
   const isMobile = useMediaQuery(useTheme().breakpoints.down('md'));
 
   return (
-    <body className="App">
+    <div className="App">
       
 
       {/*<header className="App-header">
@@ -60,6 +60,6 @@ export default function App() {
         </Toolbar>
       </AppBar> 
       </header>*/}
-    </body>
+    </div>
   );
 }

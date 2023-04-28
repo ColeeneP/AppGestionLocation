@@ -33,3 +33,19 @@
     color: $text_color;
 
 }
+
+.css-7dv1rb-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab:hover {
+    background-color: $main_color;
+
+    &:hover {
+        background-color: $main_color;
+    }
+}
+
+.css-7dv1rb-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab {
+    background-color: $main_color !important;
+}
+
+.css-ohncnb-MuiSpeedDialIcon-root {
+    color: $text_color;
+}

@@ -9,26 +9,42 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import Header from "../components/Header";
+import { GetInventoriesForProperty } from "../services/Inventory";
 
 export default function OneProperty() {
     let {id} = useParams();
     const [property, setProperty] = useState([{"id":1,"address":"","additional":null,"postalCode":86370,"city":"","rent":480.0,"charges":20.0,"deposit":500.0,"available":true}]);
     console.log(property);
+    const [inventories, setInventories] = useState([{"id":1,"property":{"id":1,"address":"1181 chemin du plan","additional":"BAT C APP 004","postalCode":86370,"city":"VIVONNE","rent":480.0,"charges":20.0,"deposit":500.0,"available":true},"status":"ingoing","date":"2023-03-22","notes":"Logement neuf, RAS"}]);
 
     useEffect(() => {
-        GetProperty(id).then(res => {setProperty(res.data);}).catch(error => error)
+        GetProperty(id).then(res => {setProperty(res.data);}).catch(error => error);
+        GetInventoriesForProperty(id).then(res => {setInventories(res.data);}).catch(error => error);
     }, [])
 
     return (
         <div>
             <Header />
+            <div class="main_oneproperty">
             <img class="property_img" src="https://as2.ftcdn.net/v2/jpg/04/39/24/79/1000_F_439247968_J5nC39sqagXLVBTRGXlt2HZgaf3LDriM.jpg" />
+            <div class="main_section">
             <div class="property_info">{property.address}<br />{property.additional}<br />{property.postalCode} {property.city}<br /><br />
             {property.rent}€ HC + {property.charges}€ charges + caution {property.deposit}€ 
             </div>
-            <div class="property_inventory"></div>
+            <div class="property_inventory">
+                <h2>Etat des lieux</h2>
+            {inventories.map((inventory) => {
+                return(
+                    <div class="detail_inventory">{inventory.status} {inventory.date} :<br />{inventory.notes}</div>   
+                )
+            })}
+            </div>
+            </div>
+            </div>
 
-            <Box sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 }}>
+            
+
+            <Box sx={{ height: 100, transform: 'translateZ(0px)', flexGrow: 1 }}>
                 <SpeedDial
                     ariaLabel="SpeedDial basic example"
                     sx={{ position: 'absolute', bottom: 16, right: 16, color:'#CEB992' }}

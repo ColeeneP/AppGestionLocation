@@ -64,7 +64,7 @@ export default function OneTenant() {
             })}
         </div>
 
-        <Box sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 }}>
+        <Box sx={{ height: 100, transform: 'translateZ(0px)', flexGrow: 1 }}>
             <SpeedDial
                 ariaLabel="SpeedDial basic example"
                 sx={{ position: 'absolute', bottom: 16, right: 16, color:'#CEB992' }}
