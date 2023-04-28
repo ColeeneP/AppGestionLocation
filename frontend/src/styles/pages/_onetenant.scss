@@ -2,7 +2,6 @@
     background: rgba(206, 185, 146, 0.2);
     border-radius: 20px;
 
-
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -33,7 +32,46 @@
             width: 100%;
         }
     }
+}
 
+.tenant_property {
+    background: rgba(206, 185, 146, 0.2);
+    border-radius: 5px; 
+    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 10px 10.5%; 
+
+    h2 {
+        padding: 0;
+    }
+
+    .detail_property {
+        padding: 0 10px 10px 10px;
+    }
+}
+
+.tenant_payments {
+    background: rgba(206, 185, 146, 0.2);
+    border-radius: 5px; 
+    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0 10.5%;
+
+    h2 {
+        padding: 0;
+    }
+
+    .detail_payment {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        padding: 0 10px 10px 10px;
+    }
 }
 
 @media (min-width: 800px) {
