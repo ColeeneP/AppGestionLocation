@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface InventoryRepository extends CrudRepository <Inventory, Long> {
 
-    //@Query(value = "SELECT * FROM Inventory i JOIN Property p ON i.property = p.id", nativeQuery = true)
-    //List<Inventory> findByProperty(Property property);
+
+    List<Inventory> findByPropertyId(Long id);
 
 }

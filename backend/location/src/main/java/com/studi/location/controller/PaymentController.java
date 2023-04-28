@@ -1,12 +1,16 @@
 package com.studi.location.controller;
 
+import com.studi.location.models.Inventory;
 import com.studi.location.models.Payment;
 import com.studi.location.models.Rental;
 import com.studi.location.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -22,8 +26,14 @@ public class PaymentController {
      * @return The payment object saved
      */
     @PostMapping("/api/payment")
-    public Payment createPayment(@RequestBody Payment payment) {
-        return paymentService.savePayment(payment);
+    public ResponseEntity<Payment>createPayment(@RequestBody Payment payment) {
+        try {
+            paymentService.savePayment(new Payment(payment.getRental(), payment.getDate(), payment.getOrigin(), payment.getAmount()));
+            return new ResponseEntity<>(payment, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+        
     }
 
     /**
@@ -39,6 +49,17 @@ public class PaymentController {
         } else {
             return null;
         }
+    }
+
+    /**
+     * Read - Get all payments' rental
+     * @param id The id of the tenant's rental
+     * @return An Payment object fulfilled
+     */
+    @GetMapping("/api/paymentbytenant/{id}")
+    public ResponseEntity<List<Payment>> findByRental_TenantId(@PathVariable("id") final Long id) {
+        List<Payment> payment = paymentService.findByRental_TenantId(id);
+        return new ResponseEntity<>(paymentService.findByRental_TenantId(id), HttpStatus.OK);
     }
 
     /**

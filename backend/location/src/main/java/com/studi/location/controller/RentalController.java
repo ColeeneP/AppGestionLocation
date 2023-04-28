@@ -1,12 +1,16 @@
 package com.studi.location.controller;
 
+import com.studi.location.models.Inventory;
 import com.studi.location.models.Property;
 import com.studi.location.models.Rental;
 import com.studi.location.models.Tenant;
 import com.studi.location.service.RentalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -39,6 +43,18 @@ public class RentalController {
         } else {
             return null;
         }
+    }
+
+    /**
+     * Read - Get all rental's tenant
+     *
+     * @param id The id of the tenant
+     * @return An Rental object fulfilled
+     */
+    @GetMapping("/api/rentalbytenant/{id}")
+    public ResponseEntity<List<Rental>> findByTenant(@PathVariable("id") final Long id) {
+        List<Rental> rental = rentalService.findByTenantId(id);
+        return new ResponseEntity<>(rentalService.findByTenantId(id), HttpStatus.OK);
     }
 
     /**

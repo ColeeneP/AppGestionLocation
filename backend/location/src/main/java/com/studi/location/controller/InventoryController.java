@@ -2,15 +2,14 @@ package com.studi.location.controller;
 
 import com.studi.location.models.Inventory;
 import com.studi.location.models.Property;
-import com.studi.location.models.Rental;
 import com.studi.location.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.rmi.ServerException;
 import java.sql.Date;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -43,6 +42,17 @@ public class InventoryController {
         } else {
             return null;
         }
+    }
+
+    /**
+     * Read - Get all inventories' property
+     * @param id The id of the property
+     * @return An Inventory object fulfilled
+     */
+    @GetMapping("/api/inventorybyproperty/{id}")
+    public ResponseEntity<List<Inventory>> findByProperty(@PathVariable("id") final Long id) {
+        List<Inventory> inventory = inventoryService.findByPropertyId(id);
+            return new ResponseEntity<>(inventoryService.findByPropertyId(id), HttpStatus.OK);
     }
 
     /**

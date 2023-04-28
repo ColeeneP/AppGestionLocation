@@ -12,6 +12,7 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "serial")
     private Long id;
 
     @ManyToOne
@@ -23,6 +24,17 @@ public class Payment {
     private String origin;
 
     private String amount;
+
+    public Payment(Rental rental, Date date, String origin, String amount) {
+        this.rental = rental;
+        this.date = date;
+        this.origin = origin;
+        this.amount = amount;
+    }
+
+    public Payment() {
+
+    }
 
     public Rental getRental() {
         return rental;
@@ -55,4 +67,5 @@ public class Payment {
     public void setAmount(String amount) {
         this.amount = amount;
     }
+
 }
