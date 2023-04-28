@@ -14,6 +14,11 @@ export const GetRental = (id) => {
         headers: header})
 }
 
+export const GetRentalsForTenant = (id) => {
+    return axios.get(config.baseURL + `api/rentalbytenant/` + id,{ 
+        headers: header})
+}
+
 export const CreateRental = (post) => {
     return axios.post(config.baseURL + `api/rental`, post, { 
         headers: header})

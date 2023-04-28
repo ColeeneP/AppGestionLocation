@@ -14,6 +14,11 @@ export const GetPayment = (id) => {
         headers: header})
 }
 
+export const GetPaymentForTenant = (id) => {
+    return axios.get(config.baseURL + `api/paymentbytenant/` + id,{ 
+        headers: header})
+}
+
 export const CreatePayment = (post) => {
     return axios.post(config.baseURL + `api/payment`, post, { 
         headers: header})

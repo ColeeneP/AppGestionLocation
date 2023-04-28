@@ -14,6 +14,11 @@ export const GetOneInventory = (id) => {
         headers: header})
 }
 
+export const GetInventoriesForProperty = (id) => {
+    return axios.get(config.baseURL + `api/inventorybyproperty/` + id,{ 
+        headers: header})
+}
+
 export const CreateInventory = (post) => {
     return axios.post(config.baseURL + `api/inventory`, post, { 
         headers: header})
