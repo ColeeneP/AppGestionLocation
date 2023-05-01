@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
-import { GetTenant } from "../services/Tenants";
+import { DeleteTenant, GetTenant } from "../services/Tenants";
 import Box from '@mui/material/Box';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
@@ -13,14 +13,20 @@ import PersonIcon from '@mui/icons-material/Person';
 import { GetPaymentForTenant } from "../services/Payments";
 import { GetRentalsForTenant } from "../services/Rental";
 
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
+
 export default function OneTenant() {
     let {id} = useParams();
     const [tenant, setTenant] = useState([{"id": 1, "firstname": "", "lastname": "", "birthday": "1990-01-01", "phone": "", "email": ""}]);
-    console.log(tenant);
     const [payments, setPayments] = useState([
         {"id":1,"rental":{"id":1,"property":{"id":1,"address":"1181 chemin du plan","additional":"BAT C APP 004","postalCode":86370,"city":"VIVONNE","rent":480.0,"charges":20.0,"deposit":500.0,"available":true},"tenant":{"id":1,"firstname":"John","lastname":"Smith","birthday":"1990-01-01","phone":"0601020304","email":"john.smith@email.fr"},"deposit":true},"date":"2023-04-28","origin":"Locataire","amount":"350"}
     ]);
-    console.log(payments);
+    const [open, setOpen] = React.useState(false);
 
     const [properties, setProperties] = useState([{"id":1,"property":{"id":1,"address":"1181 chemin du plan","additional":"BAT C APP 004","postalCode":86370,"city":"VIVONNE","rent":480.0,"charges":20.0,"deposit":500.0,"available":true},"tenant":{"id":1,"firstname":"John","lastname":"Smith","birthday":"1990-01-01","phone":"0601020304","email":"john.smith@email.fr"},"deposit":true}])
 
@@ -36,6 +42,18 @@ export default function OneTenant() {
       let path = 'modifyTenant'; 
       navigate(path);
     }
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    }
+    
+    const deleteConfirmation = () => {
+        DeleteTenant(id).then(res => {navigate(`/home`); alert("Bien supprimé")}).catch(error => error);   
+    };
 
     return (
         <div>
@@ -77,10 +95,32 @@ export default function OneTenant() {
                 icon={<SpeedDialIcon />}
             >
                 <SpeedDialAction icon={<PictureAsPdfIcon />} name={'PDF'} />
-                <SpeedDialAction icon={<EditIcon />} name={'Edit'} onClick={editRoute}/>
-                <SpeedDialAction icon={<DeleteIcon />} name={'Delete'} />
+                <SpeedDialAction icon={<EditIcon />} name={'Edit'} onClick={editRoute} />
+                <SpeedDialAction icon={<DeleteIcon />} name={'Delete'} onClick={handleClickOpen} />
             </SpeedDial>
         </Box>
+
+        <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                {"Veuillez confirmer la suppression"}
+                </DialogTitle>
+                <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                    Cette action est irréversible
+                </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                <Button onClick={handleClose}>Annuler</Button>
+                <Button onClick={deleteConfirmation} autoFocus>
+                    Confirmer
+                </Button>
+                </DialogActions>
+            </Dialog>
     </div>
     )
 
