@@ -1,21 +1,27 @@
 import { useParams, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
-import { GetProperty } from "../services/Property";
+import { DeleteProperty, GetProperty } from "../services/Property";
 import Box from '@mui/material/Box';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import Header from "../components/Header";
 import { GetInventoriesForProperty } from "../services/Inventory";
+
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
 
 export default function OneProperty() {
     let {id} = useParams();
     const [property, setProperty] = useState([{"id":1,"address":"","additional":null,"postalCode":86370,"city":"","rent":480.0,"charges":20.0,"deposit":500.0,"available":true}]);
-    console.log(property);
     const [inventories, setInventories] = useState([{"id":1,"property":{"id":1,"address":"1181 chemin du plan","additional":"BAT C APP 004","postalCode":86370,"city":"VIVONNE","rent":480.0,"charges":20.0,"deposit":500.0,"available":true},"status":"ingoing","date":"2023-03-22","notes":"Logement neuf, RAS"}]);
+    const [open, setOpen] = React.useState(false);
 
     useEffect(() => {
         GetProperty(id).then(res => {setProperty(res.data);}).catch(error => error);
@@ -27,6 +33,18 @@ export default function OneProperty() {
       let path = 'modifyProperty/'; 
       navigate(path);
     }
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    }
+    
+    const deleteConfirmation = () => {
+        DeleteProperty(id).then(res => {navigate(`/home`); alert("Bien supprimé")}).catch(error => error);   
+    };
 
     return (
         <div>
@@ -48,8 +66,6 @@ export default function OneProperty() {
             </div>
             </div>
 
-            
-
             <Box sx={{ height: 100, transform: 'translateZ(0px)', flexGrow: 1 }}>
                 <SpeedDial
                     ariaLabel="SpeedDial basic example"
@@ -57,9 +73,31 @@ export default function OneProperty() {
                     icon={<SpeedDialIcon />}
                 >
                     <SpeedDialAction icon={<EditIcon />} name={'Edit'} onClick={editRoute} />
-                    <SpeedDialAction icon={<DeleteIcon />} name={'Delete'} />
+                    <SpeedDialAction icon={<DeleteIcon />} name={'Delete'} onClick={handleClickOpen} />
                 </SpeedDial>
             </Box>
+
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                {"Veuillez confirmer la suppression"}
+                </DialogTitle>
+                <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                    Cette action est irréversible
+                </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                <Button onClick={handleClose}>Annuler</Button>
+                <Button onClick={deleteConfirmation} autoFocus>
+                    Confirmer
+                </Button>
+                </DialogActions>
+            </Dialog>
         </div>
     )
 
