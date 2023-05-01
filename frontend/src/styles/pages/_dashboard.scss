@@ -12,7 +12,9 @@ body {
 }
 
 .actions {
+    display: block;
     margin: 50px 10.5% 0 10.5%;
+    padding-top: 50px;
 } 
 
 .payment_section {
@@ -42,4 +44,22 @@ body {
         }
     }
 
+}
+
+@media (min-width: 800px) {
+    .actions {
+        display: flex;
+        justify-content: space-between;
+        
+        a {
+            display: inline-block;
+            width: 25%;
+            height: 150px;
+        }
+    }
+
+    .payment_section {
+        width: 80%;
+        margin: 0 10%;
+    }
 }

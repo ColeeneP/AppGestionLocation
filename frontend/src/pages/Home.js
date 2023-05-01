@@ -13,9 +13,9 @@ export default function Home(){
         
         
                 <section class="actions">
-                <Link to="/CreateTenant"><button class="adding_button">Ajouter un locataire <i class="fa-solid fa-user"></i></button></Link>
-                <Link to="/CreateProperty"><button class="adding_button">Ajouter un bien <i class="fa-solid fa-building"></i></button></Link>
-                <Link to="/CreatePayment"><button class="adding_button">Ajouter un paiement <i class="fa-regular fa-credit-card"></i></button></Link>
+                <Link to="/CreateTenant"><button class="adding_button"><h3>Ajouter un locataire</h3> <i class="fa-solid fa-user fa-xl"></i></button></Link>
+                <Link to="/CreateProperty"><button class="adding_button"><h3>Ajouter un bien</h3> <i class="fa-solid fa-building fa-xl"></i></button></Link>
+                <Link to="/CreatePayment"><button class="adding_button"><h3>Ajouter un paiement</h3> <i class="fa-regular fa-credit-card fa-xl"></i></button></Link>
                 </section>
         
                 <section class="payment_section">

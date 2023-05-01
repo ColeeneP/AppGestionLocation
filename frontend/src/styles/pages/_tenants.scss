@@ -11,12 +11,10 @@ body {
     }
 }
 
-
-
 #main_tenant {
     h2 {
         text-align: center;
-        padding-top: 10%;
+        padding-top: 65px;
     }    
 }
 
@@ -36,5 +34,10 @@ body {
 
     .desktop_tenant {
         display: block;
+
+        .adding_button {
+            height: 50px !important;
+        }
     }
+
 }

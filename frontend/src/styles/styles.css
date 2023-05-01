@@ -30,9 +30,7 @@ a:hover {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-}
-.adding_button .fa-solid, .adding_button .fa-regular {
-  width: 15px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .adding_button .text_button {
   width: 100%;
@@ -41,12 +39,13 @@ a:hover {
 }
 
 .submit_button {
-  width: 50%;
+  width: 100%;
   height: 40px;
   border: 1px solid #FFFFF0;
   border-radius: 5px;
   background-color: #FFFFF0;
   color: #5B2E48;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .css-7dv1rb-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab:hover {
@@ -64,16 +63,37 @@ a:hover {
   color: #5B2E48;
 }
 
+@media (min-width: 800px) {
+  .adding_button {
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    height: 150px;
+  }
+  .adding_button .fa-solid, .adding_button .fa-regular {
+    width: 20%;
+  }
+  .adding_button .text_button {
+    width: 80%;
+  }
+}
 form {
-  margin: 50px 10.5% 0 10.5%;
+  margin: 100px 10.5% 0 10.5%;
 }
 
 label {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-between;
   margin: 30px 20px 0px 20px;
+}
+
+input, select {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 40%;
+  border-color: #5B2E48;
 }
 
 header {
@@ -168,7 +188,9 @@ body .background-image {
 }
 
 .actions {
+  display: block;
   margin: 50px 10.5% 0 10.5%;
+  padding-top: 50px;
 }
 
 .payment_section {
@@ -193,8 +215,24 @@ body .background-image {
   margin: 10px 0 10px 0;
 }
 
-.main_property {
-  margin-top: 10%;
+@media (min-width: 800px) {
+  .actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  .actions a {
+    display: inline-block;
+    width: 25%;
+    height: 150px;
+  }
+  .payment_section {
+    width: 80%;
+    margin: 0 10%;
+  }
+}
+#main_property h2 {
+  text-align: center;
+  padding-top: 65px;
 }
 
 .property_card {
@@ -205,7 +243,7 @@ body .background-image {
   margin: 20px 10.5%;
   min-height: 180px;
   border-radius: 20px;
-  background: rgba(185, 213, 213, 0.8);
+  background: rgba(185, 213, 213, 0.6);
 }
 .property_card .card_image {
   width: 45%;
@@ -227,7 +265,7 @@ body .background-image {
 }
 
 .available {
-  background: rgba(206, 185, 146, 0.8);
+  background: rgba(206, 185, 146, 0.6);
 }
 
 @media (min-width: 800px) {
@@ -257,7 +295,7 @@ body .background-image {
 
 #main_tenant h2 {
   text-align: center;
-  padding-top: 10%;
+  padding-top: 65px;
 }
 
 .tenants_section {
@@ -274,6 +312,9 @@ body .background-image {
   }
   .desktop_tenant {
     display: block;
+  }
+  .desktop_tenant .adding_button {
+    height: 50px !important;
   }
 }
 .tenant_info {
