@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import { GetProperty } from "../services/Property";
 import Box from '@mui/material/Box';
@@ -21,6 +21,12 @@ export default function OneProperty() {
         GetProperty(id).then(res => {setProperty(res.data);}).catch(error => error);
         GetInventoriesForProperty(id).then(res => {setInventories(res.data);}).catch(error => error);
     }, [])
+
+    let navigate = useNavigate(); 
+    const editRoute= () =>{ 
+      let path = 'modifyProperty/'; 
+      navigate(path);
+    }
 
     return (
         <div>
@@ -50,7 +56,7 @@ export default function OneProperty() {
                     sx={{ position: 'absolute', bottom: 16, right: 16, color:'#CEB992' }}
                     icon={<SpeedDialIcon />}
                 >
-                    <SpeedDialAction icon={<EditIcon />} name={'Edit'} />
+                    <SpeedDialAction icon={<EditIcon />} name={'Edit'} onClick={editRoute} />
                     <SpeedDialAction icon={<DeleteIcon />} name={'Delete'} />
                 </SpeedDial>
             </Box>

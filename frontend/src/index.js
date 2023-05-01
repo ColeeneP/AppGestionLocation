@@ -24,6 +24,7 @@ root.render(
         <Route path="/property" element={<Property />} />
         <Route path="/createTenant" element={<AddTenant />} />
         <Route path="/createProperty" element={<AddProperty />} />
+        <Route path="/oneProperty/:id/modifyProperty" element={<AddProperty />} />
         <Route path="/createPayment" element={<AddPayment />} />
         <Route path="/oneProperty/:id" element={<OneProperty />}/>
         <Route path="/oneTenant/:id" element={<OneTenant />}/>

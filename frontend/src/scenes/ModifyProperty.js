@@ -1,9 +1,10 @@
 import { useState, useEffect} from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import { CreateProperty } from "../services/Property";
+import { UpdateProperty } from "../services/Property";
 
-export default function AddProperty() {
+export default function ModifyProperty() {
+    let {id} = useParams();
     const navigate = useNavigate();
     const [address, setAddress] = useState(String);
     const [additional, setAdditional] = useState(String);
@@ -24,7 +25,7 @@ export default function AddProperty() {
                 charges: charges,
                 deposit: deposit
             };         
-            CreateProperty(post).then((response) => {navigate(`/home`); alert("Bien ajouté") }, (error) => { alert(error.response.data.error) });   
+            UpdateProperty(id, post).then((response) => {navigate(`/home`); alert("Bien modifié") }, (error) => { alert(error.response.data.error) });   
         } else {
             alert("Veuillez renseigner tous les champs")
         }
