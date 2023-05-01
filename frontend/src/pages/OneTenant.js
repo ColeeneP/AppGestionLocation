@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import { GetTenant } from "../services/Tenants";
 import Box from '@mui/material/Box';
@@ -30,6 +30,12 @@ export default function OneTenant() {
         GetRentalsForTenant(id).then(res => {setProperties(res.data); console.log(res.data);}).catch(error => error);
         
     }, []);
+
+    let navigate = useNavigate(); 
+    const editRoute= () =>{ 
+      let path = 'modifyTenant'; 
+      navigate(path);
+    }
 
     return (
         <div>
@@ -71,7 +77,7 @@ export default function OneTenant() {
                 icon={<SpeedDialIcon />}
             >
                 <SpeedDialAction icon={<PictureAsPdfIcon />} name={'PDF'} />
-                <SpeedDialAction icon={<EditIcon />} name={'Edit'} />
+                <SpeedDialAction icon={<EditIcon />} name={'Edit'} onClick={editRoute}/>
                 <SpeedDialAction icon={<DeleteIcon />} name={'Delete'} />
             </SpeedDial>
         </Box>
