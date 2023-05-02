@@ -18,7 +18,7 @@ export default function AddProperty() {
             let post = {
                 address: address,
                 additional: additional,
-                postal_code: postalCode,
+                postalCode: postalCode,
                 city: city,
                 rent: rent,
                 charges: charges,
