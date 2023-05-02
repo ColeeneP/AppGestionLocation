@@ -1,6 +1,5 @@
 package com.studi.location.service;
 
-import com.studi.location.models.Inventory;
 import com.studi.location.models.Payment;
 import com.studi.location.repository.PaymentRepository;
 import lombok.Data;

@@ -1,9 +1,6 @@
 package com.studi.location.controller;
 
-import com.studi.location.models.Inventory;
-import com.studi.location.models.Property;
-import com.studi.location.models.Rental;
-import com.studi.location.models.Tenant;
+import com.studi.location.models.*;
 import com.studi.location.service.RentalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,8 +23,13 @@ public class RentalController {
      * @return The rental object saved
      */
     @PostMapping("/api/rental")
-    public Rental createRental(@RequestBody Rental rental) {
-        return rentalService.saveRental(rental);
+    public ResponseEntity<Rental>createRental(@RequestBody Rental rental) {
+        try {
+            rentalService.saveRental(new Rental(rental.getProperty(), rental.getTenant(), rental.getDeposit()));
+            return new ResponseEntity<>(rental, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     /**
@@ -77,7 +79,6 @@ public class RentalController {
         Optional<Rental> e = rentalService.getRental(id);
         if(e.isPresent()) {
             Rental currentRental = e.get();
-
             Property property = rental.getProperty();
             if(property != null) {
                 currentRental.setProperty(property);

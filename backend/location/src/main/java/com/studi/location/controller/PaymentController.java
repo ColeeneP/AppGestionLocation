@@ -1,8 +1,6 @@
 package com.studi.location.controller;
 
-import com.studi.location.models.Inventory;
 import com.studi.location.models.Payment;
-import com.studi.location.models.Rental;
 import com.studi.location.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,8 +30,7 @@ public class PaymentController {
             return new ResponseEntity<>(payment, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-        
+        }
     }
 
     /**
@@ -82,11 +79,6 @@ public class PaymentController {
         Optional<Payment> e = paymentService.getPayment(id);
         if(e.isPresent()) {
             Payment currentPayment = e.get();
-
-            Rental rental = payment.getRental();
-            if(rental != null) {
-                currentPayment.setRental(rental);
-            }
             Date date = payment.getDate();
             if(date != null) {
                 currentPayment.setDate(date);

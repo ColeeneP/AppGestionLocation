@@ -1,7 +1,6 @@
 package com.studi.location.controller;
 
 import com.studi.location.models.Inventory;
-import com.studi.location.models.Property;
 import com.studi.location.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -76,10 +75,6 @@ public class InventoryController {
         if(e.isPresent()) {
             Inventory currentInventory = e.get();
 
-            Property property = inventory.getProperty();
-            if(property != null) {
-                currentInventory.setProperty(property);
-            }
             Inventory.Status status = inventory.getStatus();
             if(status != null) {
                 currentInventory.setStatus(status);

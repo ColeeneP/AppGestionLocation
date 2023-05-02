@@ -60,7 +60,6 @@ public class TenantController {
         Optional<Tenant> e = tenantService.getTenant(id);
         if(e.isPresent()) {
             Tenant currentTenant = e.get();
-
             String firstname = tenant.getFirstname();
             if(firstname != null) {
                 currentTenant.setFirstname(firstname);

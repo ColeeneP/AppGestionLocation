@@ -23,6 +23,16 @@ public class Rental {
 
     private Boolean deposit;
 
+    public Rental(Property property, Tenant tenant, Boolean deposit) {
+        this.property = property;
+        this.tenant = tenant;
+        this.deposit = deposit;
+    }
+
+    public Rental() {
+
+    }
+
     public Property getProperty() {
         return property;
     }

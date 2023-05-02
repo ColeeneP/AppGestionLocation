@@ -1,7 +1,6 @@
 package com.studi.location.service;
 
 import com.studi.location.models.Inventory;
-import com.studi.location.models.Property;
 import com.studi.location.repository.InventoryRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;

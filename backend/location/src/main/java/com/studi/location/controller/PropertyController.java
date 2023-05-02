@@ -3,6 +3,8 @@ package com.studi.location.controller;
 import com.studi.location.models.Property;
 import com.studi.location.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -20,8 +22,13 @@ public class PropertyController {
      * @return The property object saved
      */
     @PostMapping("/api/property")
-    public Property createProperty(@RequestBody Property property) {
-        return propertyService.saveProperty(property);
+    public ResponseEntity<Property>createProperty(@RequestBody Property property) {
+        try {
+            propertyService.saveProperty(new Property(property.getAddress(), property.getAdditional(), property.getPostalCode(), property.getCity(), property.getRent(), property.getCharges(), property.getDeposit(), property.getAvailable()));
+            return new ResponseEntity<>(property, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     /**
@@ -59,7 +66,6 @@ public class PropertyController {
         Optional<Property> e = propertyService.getProperty(id);
         if(e.isPresent()) {
             Property currentProperty = e.get();
-
             String address = property.getAddress();
             if(address != null) {
                 currentProperty.setAddress(address);
