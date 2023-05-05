@@ -1,5 +1,5 @@
-import { useState, useEffect} from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useState} from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import { CreateRental } from "../services/Rental";
 import { useProperties } from "../hooks/useProperties";
@@ -10,20 +10,20 @@ export default function AddRental() {
     const {properties, setProperties} = useProperties();
     const {tenants, setTenants} = useTenants();
 
-    const [property, setProperty] = useState(Number);
+    const [property, setProperty] = useState(String);
     const [tenant, setTenant] = useState(Number);
-    const [deposit, setDeposit] = useState(Boolean);
+    const [deposit, setDeposit] = useState(String);
 
     const handleSubmit = (e) => {
         
         if (property !== null && tenant !== null && deposit !== null) {
             let post = {
-                property: parseFloat(property),
-                tenant: parseFloat(tenant),
+                property: parseInt(property),
+                tenant: parseInt(tenant),
                 deposit: deposit
             };       
             console.log(post);  
-            CreateRental(post).then((response) => {navigate(`/home`); alert("Location ajoutée") }, (error) => { alert(error.response.data.error) });   
+            CreateRental(post).then((response) => {navigate(`/home`); alert("Location ajoutée") }, (error) => { alert(error.message) });   
         } else {
             alert("Veuillez renseigner tous les champs")
         }

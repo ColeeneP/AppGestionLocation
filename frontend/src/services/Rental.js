@@ -20,7 +20,7 @@ export const GetRentalsForTenant = (id) => {
 }
 
 export const CreateRental = (post) => {
-    return axios.post(config.baseURL + `api/rental/`, post, { 
+    return axios.post(config.baseURL + `api/rental`, post, { 
         headers: header})
 }
 

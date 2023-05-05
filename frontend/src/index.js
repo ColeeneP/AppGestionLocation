@@ -15,6 +15,7 @@ import OneTenant from './pages/OneTenant';
 import ModifyProperty from './scenes/ModifyProperty';
 import ModifyTenant from './scenes/ModifyTenant';
 import AddRental from './scenes/AddRental';
+import AddInventory from './scenes/AddInventory';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -33,6 +34,7 @@ root.render(
         <Route path="/oneProperty/:id" element={<OneProperty />}/>        
         <Route path="/createProperty" element={<AddProperty />} />
         <Route path="/oneProperty/:id/modifyProperty" element={<ModifyProperty />} />
+        <Route path="/oneProperty/:id/createInventory" element={<AddInventory />} />
 
         <Route path="/createPayment" element={<AddPayment />} />
 

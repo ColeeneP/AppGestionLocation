@@ -7,6 +7,7 @@ import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import AddHomeIcon from '@mui/icons-material/AddHome';
 import Header from "../components/Header";
 import { GetInventoriesForProperty } from "../services/Inventory";
 
@@ -33,6 +34,10 @@ export default function OneProperty() {
       let path = 'modifyProperty/'; 
       navigate(path);
     }
+    const inventoryRoute= () =>{ 
+        let path = 'createInventory/'; 
+        navigate(path);
+      }
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -72,6 +77,7 @@ export default function OneProperty() {
                     sx={{ position: 'absolute', bottom: 16, right: 16, color:'#CEB992' }}
                     icon={<SpeedDialIcon />}
                 >
+                    <SpeedDialAction icon={<AddHomeIcon />} name={'Inventory'} onClick={inventoryRoute} />
                     <SpeedDialAction icon={<EditIcon />} name={'Edit'} onClick={editRoute} />
                     <SpeedDialAction icon={<DeleteIcon />} name={'Delete'} onClick={handleClickOpen} />
                 </SpeedDial>

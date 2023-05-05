@@ -52,7 +52,7 @@ export default function OneTenant() {
     }
     
     const deleteConfirmation = () => {
-        DeleteTenant(id).then(res => {navigate(`/home`); alert("Bien supprimé")}).catch(error => error);   
+        DeleteTenant(id).then(res => {navigate(`/home`); alert("Locataire supprimé")}).catch(error => error);   
     };
 
     return (

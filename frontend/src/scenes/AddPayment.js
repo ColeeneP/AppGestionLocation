@@ -1,5 +1,5 @@
-import { useState, useEffect} from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useState} from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import { CreatePayment } from "../services/Payments";
 import { useRentals } from "../hooks/useRentals";
