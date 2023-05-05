@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import { Link } from "react-router-dom";
 
 export default function Tenants() {
-    const {tenants, setTenants} = useTenants();
+    const {tenants} = useTenants();
 
     return(
         <div>

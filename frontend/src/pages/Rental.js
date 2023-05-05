@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { GetRental, UpdateRental } from "../services/Rental";
+import { UpdateRental } from "../services/Rental";
 
 export default function Rental() {
     const[rental, setRental] = useState([{flat: {address: '2 Rue du Maréchal Juin'}, tenant: {firstname: 'John', lastname: 'Doe'}, deposit: true}]);

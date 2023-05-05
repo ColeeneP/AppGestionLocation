@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { GetPayments } from "../services/Payments";
 
 export const usePayments = (events) => {

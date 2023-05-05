@@ -2,9 +2,7 @@ import axios from "axios";
 import config from "../config.json";
 
 let authToken = localStorage.getItem('token');
-let header = {  'Token': authToken,
-                authorization: ' xxxxxxxxxx' ,
-                'Content-Type': 'application/json'};
+let header = {'Token': authToken};
 
 export const GetProperties = () => {
     return axios.get(config.baseURL + `api/property/`,{ 
