@@ -1,11 +1,16 @@
 package com.studi.location.models;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Data
 @Entity
+@Getter
+@Setter
 @Table(name = "rental")
 public class Rental {
 
@@ -31,29 +36,5 @@ public class Rental {
 
     public Rental() {
 
-    }
-
-    public Property getProperty() {
-        return property;
-    }
-
-    public void setProperty(Property property) {
-        this.property = property;
-    }
-
-    public Tenant getTenant() {
-        return tenant;
-    }
-
-    public void setTenant(Tenant tenant) {
-        this.tenant = tenant;
-    }
-
-    public Boolean getDeposit() {
-        return deposit;
-    }
-
-    public void setDeposit(Boolean deposit) {
-        this.deposit = deposit;
     }
 }

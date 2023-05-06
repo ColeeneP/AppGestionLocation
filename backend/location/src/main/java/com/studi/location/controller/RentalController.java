@@ -1,11 +1,15 @@
 package com.studi.location.controller;
 
-import com.studi.location.models.*;
+import com.studi.location.models.Rental;
+import com.studi.location.models.Property;
+import com.studi.location.models.Tenant;
+import com.studi.location.repository.TenantRepository;
 import com.studi.location.service.RentalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +20,8 @@ public class RentalController {
 
     @Autowired
     private RentalService rentalService;
+    @Autowired
+    private TenantRepository tenantRepository;
 
     /**
      * Create - Add a new rental
@@ -49,7 +55,6 @@ public class RentalController {
 
     /**
      * Read - Get all rental's tenant
-     *
      * @param id The id of the tenant
      * @return An Rental object fulfilled
      */

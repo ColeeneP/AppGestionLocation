@@ -1,14 +1,19 @@
 package com.studi.location.models;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Date;
 
 @Data
 @Entity
+@Getter
+@Setter
 @Table(name = "inventory")
 public class Inventory {
+
     public enum Status {
         ingoing,
         outgoing
@@ -29,35 +34,14 @@ public class Inventory {
 
     private String notes;
 
-    public Property getProperty() {
-        return property;
-    }
-
-    public void setProperty(Property property) {
+    public Inventory(Property property, Status status, Date date, String notes) {
         this.property = property;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
         this.status = status;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
         this.date = date;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public Inventory() {
+
     }
 }

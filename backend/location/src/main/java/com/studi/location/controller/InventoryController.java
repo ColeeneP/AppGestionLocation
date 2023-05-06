@@ -1,6 +1,8 @@
 package com.studi.location.controller;
 
 import com.studi.location.models.Inventory;
+import com.studi.location.models.Rental;
+import com.studi.location.models.Tenant;
 import com.studi.location.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
