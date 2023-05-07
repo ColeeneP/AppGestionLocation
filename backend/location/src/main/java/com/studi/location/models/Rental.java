@@ -1,11 +1,9 @@
 package com.studi.location.models;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.procedure.ProcedureOutputs;
 
 import javax.persistence.*;
-import java.util.Optional;
 
 @Data
 @Entity
@@ -28,13 +26,11 @@ public class Rental {
 
     private Boolean deposit;
 
-    public Rental(Property property, Tenant tenant, Boolean deposit) {
+    public Rental(Property property, Tenant tenant,Boolean deposit){
+        this.deposit = deposit;
         this.property = property;
         this.tenant = tenant;
-        this.deposit = deposit;
     }
 
-    public Rental() {
-
-    }
+    public Rental(){}
 }

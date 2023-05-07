@@ -1,10 +1,14 @@
 package com.studi.location.controller;
 
+import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import com.studi.location.models.Rental;
 import com.studi.location.models.Property;
 import com.studi.location.models.Tenant;
+import com.studi.location.models.dto.RentalDTO;
 import com.studi.location.repository.TenantRepository;
+import com.studi.location.service.PropertyService;
 import com.studi.location.service.RentalService;
+import com.studi.location.service.TenantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +25,9 @@ public class RentalController {
     @Autowired
     private RentalService rentalService;
     @Autowired
-    private TenantRepository tenantRepository;
+    private PropertyService propertyService;
+    @Autowired
+    private TenantService tenantService;
 
     /**
      * Create - Add a new rental
@@ -29,11 +35,31 @@ public class RentalController {
      * @return The rental object saved
      */
     @PostMapping("/api/rental")
-    public ResponseEntity<Rental>createRental(@RequestBody Rental rental) {
+    public ResponseEntity<Rental>createRental(@RequestBody RentalDTO rentalDTO) {
         try {
-            rentalService.saveRental(new Rental(rental.getProperty(), rental.getTenant(), rental.getDeposit()));
-            return new ResponseEntity<>(rental, HttpStatus.CREATED);
+            //Création d'un nouvel object Rental avec les données du DTO
+
+            //Step 1 : verification que les données sont OK
+            if(rentalDTO != null && rentalDTO.getProperty() != null && rentalDTO.getTenant() != null && rentalDTO.getDeposit() != null) {
+                //STEP 2 : tentative de recuperation des tenant et property
+                Property property = this.propertyService.getProperty(rentalDTO.getProperty()).orElse(null);
+                Tenant tenant = this.tenantService.getTenant(rentalDTO.getTenant()).orElse(null);
+
+                // STEP 3 : si , on a une donnée null, on arrête le traitement
+                if(property == null || tenant == null){
+                    return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+
+                Rental rental = new Rental(property, tenant, rentalDTO.getDeposit());
+                rentalService.saveRental(rental);
+                return new ResponseEntity<>(null, HttpStatus.CREATED);
+            }
+            else{
+                return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            }
         } catch (Exception e) {
+            //print stack trace
+            e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
