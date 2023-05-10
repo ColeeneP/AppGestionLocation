@@ -1,28 +1,35 @@
-import { useState} from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import { CreateRental } from "../services/Rental";
 import { useProperties } from "../hooks/useProperties";
 import { useTenants } from "../hooks/useTenants";
+import { GetProperty } from "../services/Property";
+import { GetTenant } from "../services/Tenants";
 
 export default function AddRental() {
     const navigate = useNavigate();
     const {properties, setProperties} = useProperties();
     const {tenants, setTenants} = useTenants();
 
-    const [property, setProperty] = useState(String);
-    const [tenant, setTenant] = useState(Number);
+    const [propertyId, setPropertyId] = useState();
+    const [tenantId, setTenantId] = useState();
     const [deposit, setDeposit] = useState(String);
 
-    const handleSubmit = (e) => {
+    const [property, setProperty] = useState({"id":null,"address":"","additional":"","postalCode":30150,"city":"","rent":450.0,"charges":50.0,"deposit":500.0,"available":null});
+    const [tenant, setTenant] = useState({"id":null,"firstname":"","lastname":"","birthday":"","phone":"","email":""});  
+
+    const handleSubmit = (e) => {       
+            GetProperty(propertyId).then(res => {setProperty(res.data)}).catch(err => alert(err.message));
+            GetTenant(tenantId).then(res => {setTenant(res.data)}).catch(err => alert(err.message));
         
-        if (property !== null && tenant !== null && deposit !== null) {
+        if (property.id !== null && tenant.id !== null && deposit !== null) {
             let post = {
-                property: parseInt(property),
-                tenant: parseInt(tenant),
-                deposit: deposit
+                property: property,
+                tenant: tenant,
+                deposit: deposit == "true" ? true : false
             };       
-            console.log(post);  
+            console.log(property);  
             CreateRental(post).then((response) => {navigate(`/home`); alert("Location ajoutée") }, (error) => { alert(error.message) });   
         } else {
             alert("Veuillez renseigner tous les champs")
@@ -34,7 +41,7 @@ export default function AddRental() {
           <Header /> 
         <form onSubmit={handleSubmit} class="formulaire">
             <label for="property">Bien : 
-            <select name='property' id='property' onChange={(e) => setProperty(e.target.value)}> 
+            <select name='property' id='property' onChange={(e) => setPropertyId(e.target.value)}> 
                 <option> Choisir un bien</option>
                 {properties.map((option) => (
                     <option key={option.id} value={option.id}> {option.address + ' ' + option.additional + ' ' + option.city} </option>
@@ -43,7 +50,7 @@ export default function AddRental() {
             </label><br />
 
             <label for="tenant">Locataire : 
-            <select name='tenant' id='tenant' onChange={(e) => setTenant(e.target.value)}> 
+            <select name='tenant' id='tenant' onChange={(e) => setTenantId(e.target.value)}> 
                 <option> Choisir un locataire</option>
                 {tenants.map((option) => (
                     <option key={option.id} value={option.id}> {option.firstname + ' ' + option.lastname} </option>

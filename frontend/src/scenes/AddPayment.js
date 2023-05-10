@@ -1,22 +1,47 @@
 import { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import { CreatePayment } from "../services/Payments";
+import { CreatePayment, GetPayment } from "../services/Payments";
 import { useRentals } from "../hooks/useRentals";
+import { GetRental } from "../services/Rental";
 
 export default function AddPayment() {
     const navigate = useNavigate();
     const {rentals, setRentals} = useRentals();
 
-    const [rental, setRental] = useState(0);
+    const [rentalId, setRentalId] = useState(0);
     const [date, setDate] = useState(Date);
     const [origin, setOrigin] = useState(String);
     const [amount, setAmount] = useState(String);
-    console.log(rental);
+
+    const [rental, setRental] = useState({
+        "id": null,
+        "property": {
+            "id": null,
+            "address": "",
+            "additional": "",
+            "postalCode": null,
+            "city": "",
+            "rent": null,
+            "charges": null,
+            "deposit": null,
+            "available": true
+        },
+        "tenant": {
+            "id": 1,
+            "firstname": "",
+            "lastname": "",
+            "birthday": "",
+            "phone": "",
+            "email": ""
+        },
+        "deposit": true
+    });
 
     const handleSubmit = (e) => {
+        GetRental(rentalId).then(res => setRental(res.data)).catch(err => alert(err.message));
         
-        if (rental !== null && date !== null && origin !== null && amount !== null) {
+        if (rental.id !== null && date !== null && origin !== null && amount !== null) {
             let post = {
                 rental: rental,
                 date: date,
@@ -35,7 +60,7 @@ export default function AddPayment() {
           <Header /> 
         <form onSubmit={handleSubmit} class="formulaire">
             <label for="rental">Location : 
-            <select name='rental' id='rental' onChange={(e) => setRental(e.target.value)}> 
+            <select name='rental' id='rental' onChange={(e) => setRentalId(e.target.value)}> 
                 <option> Choisir un locataire</option>
                 {rentals.map((option) => (
                     <option key={option.id} value={option.id}> {option.tenant.lastname + ' ' + option.tenant.firstname} </option>
