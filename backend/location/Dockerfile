@@ -1,11 +1,12 @@
 FROM openjdk:17-jdk-slim-buster
+
+# Define environment variables
+ENV SPRING_OUTPUT_ANSI_ENABLED=ALWAYS \JAVA_OPTS=""
+# Set the working directory to /app
 WORKDIR /app
-
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
-RUN chmod +x mvnw
-RUN ./mvnw dependency:go-offline
-
-COPY src ./src
-
-CMD ["./mvnw", "spring-boot:run"]
+# Copy the executable into the container at /app
+ADD target/*.jar app.jar
+# Make port 8080 available to the world outside this container
+EXPOSE 8080
+# Run app.jar when the container launches
+CMD ["java", "-jar", "/app/app.jar"]
