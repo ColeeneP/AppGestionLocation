@@ -10,6 +10,6 @@ RUN mvn -f /home/app/pom.xml clean package
 # Package stage
 #
 FROM openjdk:17-jdk-slim-buster
-COPY --from=build /home/app/target/location-0.0.1.jar /usr/local/lib/location.jar
+COPY --from=build /home/app/target/LocationApplication-0.0.1.jar /usr/local/lib/LocationApplication.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/usr/local/lib/location.jar"]
+ENTRYPOINT ["java","-jar","/usr/local/lib/LocationApplication.jar"]
