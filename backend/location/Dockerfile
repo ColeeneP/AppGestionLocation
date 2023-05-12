@@ -1,5 +1,15 @@
+#
+# Build stage
+#
+FROM maven:4.0.0-17-jdk-slim-buster AS build
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package
+
+#
+# Package stage
+#
 FROM openjdk:17-jdk-slim-buster
-VOLUME /tmp
-ARG JAR_FILE
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+COPY --from=build /home/app/target/location-0.0.1.jar /usr/local/lib/location.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/usr/local/lib/location.jar"]
