@@ -1,15 +1,13 @@
-#
-# Build stage
-#
-FROM maven AS build
-COPY src /home/app/src
-COPY pom.xml /home/app
-RUN mvn -f /home/app/pom.xml clean package
+# syntax=docker/dockerfile:1
 
-#
-# Package stage
-#
-FROM openjdk:17-jdk-slim-buster
-COPY --from=build /home/app/src /location/out/artifacts/location_jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","/usr/local/lib/location.jar"]
+FROM eclipse-temurin:17-jdk-jammy
+
+WORKDIR /app
+
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
+RUN ./mvnw dependency:resolve
+
+COPY src ./src
+
+CMD ["./mvnw", "spring-boot:run"]
