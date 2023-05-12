@@ -1,7 +1,7 @@
 #
 # Build stage
 #
-FROM maven:4.0.0-17-jdk-slim-buster AS build
+FROM maven:4.0.0-openjdk-17 AS build
 COPY src /home/app/src
 COPY pom.xml /home/app
 RUN mvn -f /home/app/pom.xml clean package
